@@ -24,14 +24,21 @@ class StrEn(str):
         if not start_mate:
             return
 
-        end_span = (len(self), len(self))
+        string = self[start_span[1]:]
+        end_span = (len(string), len(string))
         if end:
-            string = self[start_span[1]:]
             end_mate = re.search(end, string)
-
             if not end_mate:
                 return
-
             end_span = end_mate.span()
 
-        return self[start_span[1]:start_span[1] + end_span[0]]
+        return self[start_span[1]:(start_span[1] + end_span[0])]
+
+    def extract_num_en_chchar(self):
+        """提取数字、英文、汉字
+        排除特殊字符
+        """
+        return re.sub(
+            u"([^\u4e00-\u9fa5\u0030-\u0039\u0041-\u005a\u0061-\u007a])",
+            "",
+            self)
