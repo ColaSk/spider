@@ -1,0 +1,2 @@
+gne==0.3.0
+newspaper3k==0.2.8
