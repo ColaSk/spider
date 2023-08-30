@@ -41,3 +41,12 @@ class StrEn(str):
         return re.sub(u"([^\u4e00-\u9fa5\u0030-\u0039\u0041-\u005a\u0061-\u007a])",
                       "",
                       self)
+
+    def filter_html(self):
+        """过滤html"""
+        _str = self.strip()
+        _str = _str.replace('&nbsp;', '')
+        match = re.findall('<.+?>', _str, re.M | re.I)
+        for m in match:
+            _str = _str.replace(m, '')
+        return _str
