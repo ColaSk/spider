@@ -1,2 +1,3 @@
 gne==0.3.0
 newspaper3k==0.2.8
+curl_cffi  # ja3 TLS指纹
